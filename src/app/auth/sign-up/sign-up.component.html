@@ -1,0 +1,32 @@
+<h1>
+  Sign Up
+</h1>
+
+<form (ngSubmit)="onSubmit()" class="ui form" [formGroup]="signUpForm">
+
+  <app-input type="text" label="Username" [control]="$any(signUpForm).get('username')"></app-input>
+
+
+
+  <app-input label="Password" [control]="$any(signUpForm).get('password')"  type="password"></app-input>
+
+
+  <app-input label="Password Confirmation" [control]="$any(signUpForm).get('passwordConfirmation')" type="password"></app-input>
+
+
+
+
+
+  <div *ngIf="showError()" class="ui red  basic label">
+    <p *ngIf="passwordMatchError()">
+      Passwords don't match
+    </p>
+    <p *ngIf="signUpForm.errors!['noConnection']">
+      No Connection
+    </p>
+  </div>
+  <div>
+    <button class="ui sumbit button primary">Submit</button>
+  </div>
+</form>
+

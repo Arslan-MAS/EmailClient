@@ -1,0 +1,27 @@
+<div class="field">
+  <label [for]="label">{{ label }}</label>
+
+  <input  *ngIf="controlType=='input' " [type]="type" [id]="label" [formControl]="control" >
+
+
+  <textarea *ngIf="controlType=='textarea' " [id]="label" [formControl]="control"  ></textarea>
+</div>
+<div class="ui pointing red basic label" *ngIf="showErrors()">
+
+  <p class="help is-danger"  *ngIf="control!.errors!['required']"> Value is required.</p>
+
+  <p class="help is-danger" *ngIf="control!.errors!['minlength']"> Value should be atleast {{ control!.errors!['minlength'].requiredLength }} but is actually {{ control!.errors!['minlength'].actualLength  }}.</p>
+
+
+  <p class="help is-danger"  *ngIf="control!.errors!['maxlength']"> Value should be atmax {{ control!.errors!['maxlength'].requiredLength }} but is actually {{ control!.errors!['maxlength'].actualLength  }}.</p>
+
+  <p class="help is-danger"  *ngIf="control!.errors!['pattern']"> Invalid Pattern</p>
+
+  <p class="help is-danger"  *ngIf="control!.errors!['nonUniqueUsername']"> Username Already Exists</p>
+
+  <p class="help is-danger"  *ngIf="control!.errors!['noConnection']"> Your Connection is broken.</p>
+
+  <p class="help is-danger"  *ngIf="control!.errors!['email']">Enter a valid email.</p>
+
+
+<div>
